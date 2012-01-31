@@ -50,7 +50,7 @@ end
 #
 class Promise
   alias __class__ class #:nodoc:
-  instance_methods.each { |m| undef_method m unless m =~ /^__/ }
+  instance_methods.each { |m| undef_method m unless m =~ /(^__|^object_id$)/ }
 
   def initialize( &computation ) #:nodoc:
     @mutex = Mutex.new
